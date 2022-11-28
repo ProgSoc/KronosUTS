@@ -6,6 +6,7 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
+import helmet from '@fastify/helmet';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -21,6 +22,7 @@ async function bootstrap() {
       },
     },
   );
+  app.register(helmet);
   app.enableVersioning({
     type: VersioningType.URI,
     prefix: 'v',
