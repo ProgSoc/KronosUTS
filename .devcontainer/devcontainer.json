@@ -4,7 +4,8 @@
 	"name": "Node.js & PostgreSQL",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"extensions": ["dbaeumer.vscode-eslint", "Prisma.prisma"],
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
