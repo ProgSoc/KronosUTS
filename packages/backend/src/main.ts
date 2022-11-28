@@ -4,7 +4,15 @@ import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    cors: {
+      origin: [
+        process.env.NODE_ENV === 'production'
+          ? 'prod url'
+          : 'http://localhost:5173',
+      ],
+    },
+  });
   app.enableVersioning({
     type: VersioningType.URI,
     prefix: 'v',
