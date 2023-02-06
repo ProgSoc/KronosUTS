@@ -4,11 +4,11 @@ import Faculty from './Faculty';
 import Semester from './Semester';
 import Type from './Type';
 
-type SearchParams = {
+interface SearchParams extends Record<string, any> {
   /**
    * @example "41025"
    */
-  'search-term': `${number}`;
+  'search-term': string;
   semester: Semester;
   campus: Campus;
   faculty: Faculty;
@@ -22,6 +22,6 @@ type SearchParams = {
    * @example "23:00"
    */
   'end-time': string;
-};
+}
 
 export default SearchParams;

@@ -5,3 +5,4 @@ export { default as Semester } from './Semester';
 export { default as Subject } from './Subject';
 export { default as Type } from './Type';
 export { default as Faculty } from './Faculty';
+export { default as SearchParams } from './SearchParams';

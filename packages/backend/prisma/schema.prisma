@@ -10,6 +10,48 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Subject {
+model Activity {
   id String @id
+  subject_code         String
+  activity_group_code  String
+  activity_code        String
+  campus               String
+  day_of_week          String
+  start_time           String
+  location             String
+  staff                String
+  duration             String
+  selectable           String
+  availability         Int
+  week_pattern         String
+  description          String
+  zone                 String
+  department           String
+  semester             String
+  semester_description String
+  activity_type        String
+  start_date           String
+  color                String
+  cluster              String
+  activitiesDays       String[]
+  Subject              Subject? @relation(fields: [subjectSubject_code], references: [subject_code])
+  subjectSubject_code  String?
+  updated_at        DateTime   @default(now()) @updatedAt
+  created_at        DateTime   @default(now())
+}
+
+model Subject {
+  subject_code      String     @id
+  callista_code     String
+  description       String
+  manager           String
+  email_address     String
+  faculty           String
+  semester          String
+  campus            String
+  show_on_timetable Int
+  activity_count    Int
+  activities        Activity[]
+  updated_at        DateTime   @default(now()) @updatedAt
+  created_at        DateTime   @default(now())
 }
