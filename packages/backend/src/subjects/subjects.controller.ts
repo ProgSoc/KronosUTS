@@ -9,12 +9,13 @@ import {
   Query,
   UseInterceptors,
 } from '@nestjs/common';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { MinimalSubjectDto } from './dto/MinimalSubject.dto';
 import { SubjectsService } from './subjects.service';
 import { PublicActivityDto } from './dto/PublicActivity.dto';
 import { SemesterDto } from './dto/Semester.dto';
 
+@ApiTags('Subjects')
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller('subjects')
 export class SubjectsController {
@@ -22,6 +23,10 @@ export class SubjectsController {
 
   @Get('/list')
   @CacheTTL(60)
+  @ApiOperation({
+    summary: 'Get a list of subjects for a given semester',
+    operationId: 'getSubjectList',
+  })
   @UseInterceptors(CacheInterceptor)
   @ApiOkResponse({ type: [MinimalSubjectDto] })
   async getSubjectList(
@@ -33,6 +38,10 @@ export class SubjectsController {
 
   @Get(':code')
   @CacheTTL(60)
+  @ApiOperation({
+    summary: 'Get the details of a subject for a given semester',
+    operationId: 'getSubjectDetails',
+  })
   @UseInterceptors(CacheInterceptor)
   @ApiOkResponse({ type: MinimalSubjectDto })
   async getSubject(
@@ -45,6 +54,10 @@ export class SubjectsController {
 
   @Get(':code/activities')
   @CacheTTL(60)
+  @ApiOperation({
+    summary: "Get a subject's activities for a given semester",
+    operationId: 'getSubjectActivities',
+  })
   @UseInterceptors(CacheInterceptor)
   @ApiOkResponse({ type: [PublicActivityDto] })
   async getSubjectActivities(
