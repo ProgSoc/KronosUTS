@@ -9,7 +9,7 @@ export { CancelablePromise, CancelError } from './core/CancelablePromise';
 export { OpenAPI } from './core/OpenAPI';
 export type { OpenAPIConfig } from './core/OpenAPI';
 
-export type { MinimalSubjectDto } from './models/MinimalSubjectDto';
+export { MinimalSubjectDto } from './models/MinimalSubjectDto';
 export type { PublicActivityDto } from './models/PublicActivityDto';
 export { Semester } from './models/Semester';
 
