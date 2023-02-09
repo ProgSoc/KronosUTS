@@ -6,12 +6,14 @@ import type { OpenAPIConfig } from './core/OpenAPI';
 import { FetchHttpRequest } from './core/FetchHttpRequest';
 
 import { DefaultService } from './services/DefaultService';
+import { SubjectsService } from './services/SubjectsService';
 
 type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
 
 export class ApiClient {
 
     public readonly default: DefaultService;
+    public readonly subjects: SubjectsService;
 
     public readonly request: BaseHttpRequest;
 
@@ -29,6 +31,7 @@ export class ApiClient {
         });
 
         this.default = new DefaultService(this.request);
+        this.subjects = new SubjectsService(this.request);
     }
 }
 

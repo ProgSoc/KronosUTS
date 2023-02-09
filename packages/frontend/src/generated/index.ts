@@ -14,3 +14,4 @@ export type { PublicActivityDto } from './models/PublicActivityDto';
 export { Semester } from './models/Semester';
 
 export { DefaultService } from './services/DefaultService';
+export { SubjectsService } from './services/SubjectsService';
