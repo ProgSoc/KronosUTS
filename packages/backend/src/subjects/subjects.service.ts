@@ -3,6 +3,7 @@ import { PrismaService } from '@/prisma/prisma.service';
 import { Semester } from '@/types';
 import { FetcherService } from '@/fetcher/fetcher.service';
 import { Activity, Subject } from '@prisma/client';
+import { SemesterEnum } from '@/types/Semester';
 
 @Injectable()
 export class SubjectsService {
@@ -16,10 +17,10 @@ export class SubjectsService {
    * @param sem The semester to get the subject list for
    * @returns List of subjects for the given semester
    */
-  public async getSubjectList(sem: Semester) {
+  public async getSubjectList(sem: SemesterEnum) {
     return this.db.subject.findMany({
       where: {
-        semester: sem,
+        semester: sem === SemesterEnum.ALL ? undefined : sem,
       },
     });
   }
@@ -31,7 +32,7 @@ export class SubjectsService {
    * @returns The subject details for the given semester and subject code
    */
   public async getSubjectDetails(
-    sem: Semester,
+    sem: SemesterEnum,
     code: string,
   ): Promise<Subject | undefined> {
     const subject = await this.db.subject.findUnique({
@@ -60,7 +61,7 @@ export class SubjectsService {
    * @returns The subject activities for the given semester and subject code
    */
   public async getSubjectActivities(
-    sem: Semester,
+    sem: SemesterEnum,
     code: string,
   ): Promise<Activity[]> {
     const subjectDetails = await this.getSubjectDetails(sem, code);
