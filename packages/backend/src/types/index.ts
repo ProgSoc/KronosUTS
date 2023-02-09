@@ -1,8 +1,8 @@
-export { default as Activity } from './Activity';
-export { default as Campus } from './Campus';
-export { default as Days } from './Days';
-export { default as Semester } from './Semester';
-export { default as Subject } from './Subject';
-export { default as Type } from './Type';
-export { default as Faculty } from './Faculty';
-export { default as SearchParams } from './SearchParams';
+export type { default as Activity } from './Activity';
+export type { default as Campus } from './Campus';
+export type { default as Days } from './Days';
+export type { default as Semester } from './Semester';
+export type { default as Subject } from './Subject';
+export type { default as Type } from './Type';
+export type { default as Faculty } from './Faculty';
+export type { default as SearchParams } from './SearchParams';

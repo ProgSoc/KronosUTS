@@ -18,8 +18,8 @@ export class AppController {
 
   @Get()
   async getHello() {
-    const subjects = await this.fetcherService.fetchSubject(41025);
-    console.log({ subjects });
-    return subjects;
+    // const subjects = await this.fetcherService.fetchSubject(41025);
+    // console.log({ subjects });
+    return [];
   }
 }

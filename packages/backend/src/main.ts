@@ -7,6 +7,7 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import helmet from '@fastify/helmet';
+import { PrismaService } from './prisma/prisma.service';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -27,6 +28,9 @@ async function bootstrap() {
     type: VersioningType.URI,
     prefix: 'v',
   });
+
+  const prismaService = app.get(PrismaService);
+  await prismaService.enableShutdownHooks(app);
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
 

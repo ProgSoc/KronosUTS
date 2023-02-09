@@ -10,13 +10,21 @@
     "sourceMap": true,
     "outDir": "./dist",
     "noEmit": true,
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "incremental": false,
     "skipLibCheck": true,
     "strictNullChecks": false,
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@/*": [
+        "*"
+      ],
+      "@": [
+        "."
+      ]
+    }
   }
 }

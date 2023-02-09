@@ -41,5 +41,9 @@ export default interface Subject {
    * @example 10
    */
   activity_count: number;
+  /**
+   * @example []
+   */
+  children: Array<unknown>;
   activities: Record<string, Activity>;
 }
