@@ -1,3 +1,4 @@
+import { SemesterEnum } from '@/types/Semester';
 import { ApiProperty } from '@nestjs/swagger';
 import { Subject } from '@prisma/client';
 import { Exclude } from 'class-transformer';
@@ -7,6 +8,9 @@ export class MinimalSubjectDto implements Subject {
   public callista_code: string;
   @ApiProperty()
   public description: string;
+
+  @ApiProperty({ enum: SemesterEnum })
+  public semester: SemesterEnum;
 
   constructor(subject: Subject) {
     Object.assign(this, subject);
@@ -20,8 +24,7 @@ export class MinimalSubjectDto implements Subject {
   email_address: string;
   @Exclude()
   faculty: string;
-  @Exclude()
-  semester: string;
+
   @Exclude()
   campus: string;
   @Exclude()

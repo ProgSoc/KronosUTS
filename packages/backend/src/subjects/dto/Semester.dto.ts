@@ -9,6 +9,7 @@ export class SemesterDto {
     enumName: 'Semester',
     description: 'Semester to filter subjects by',
     example: 'SPR',
+    default: SemesterEnum.ALL,
   })
   @IsEnum(SemesterEnum)
   semester: SemesterEnum;
