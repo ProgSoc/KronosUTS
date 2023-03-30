@@ -15,6 +15,7 @@
   "scripts": {
     "dev": "concurrently \"npm:dev:*\"",
     "dev:backend": "yarn workspace backend dev",
-    "dev:frontend": "yarn workspace frontend dev"
+    "dev:frontend": "yarn workspace frontend dev",
+    "generate:openapi": "yarn workspace frontend generate"
   }
 }

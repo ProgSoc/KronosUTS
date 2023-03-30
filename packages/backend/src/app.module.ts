@@ -6,9 +6,11 @@ import { PrismaService } from './prisma/prisma.service';
 import { FetcherService } from './fetcher/fetcher.service';
 import { SubjectsModule } from './subjects/subjects.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     CacheModule.register({
       isGlobal: true,
     }),

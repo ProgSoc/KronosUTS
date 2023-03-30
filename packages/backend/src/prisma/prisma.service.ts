@@ -4,14 +4,26 @@ import {
   Logger,
   OnModuleInit,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { PrismaClient } from '@prisma/client';
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit {
-  private logger = new Logger(PrismaService.name);
+  constructor(
+    private readonly configService: ConfigService,
+    private readonly logger = new Logger(PrismaService.name),
+  ) {
+    const url = configService.getOrThrow('DATABASE_URL');
 
-  constructor() {
-    super();
+    logger.debug({ url });
+
+    super({
+      datasources: {
+        db: {
+          url,
+        },
+      },
+    });
   }
 
   async onModuleInit() {
