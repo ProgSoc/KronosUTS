@@ -15,7 +15,7 @@ export class DefaultService {
     public appControllerGetHello(): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/',
+            url: '/api',
         });
     }
 

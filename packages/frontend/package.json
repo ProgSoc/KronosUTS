@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "generate": "openapi -i http://localhost:3000/api-json -o src/generated -c fetch --name ApiClient"
+    "generate": "openapi -i http://localhost:3000/docs-json -o src/generated -c fetch --name ApiClient"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",

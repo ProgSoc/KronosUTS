@@ -2,29 +2,11 @@ import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import {
-  FastifyAdapter,
-  NestFastifyApplication,
-} from '@nestjs/platform-fastify';
-import helmet from '@fastify/helmet';
 import { PrismaService } from './prisma/prisma.service';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
-    new FastifyAdapter(),
-    {
-      cors: {
-        origin: [
-          process.env.NODE_ENV === 'production'
-            ? 'prod url'
-            : 'http://localhost:5173',
-        ],
-      },
-    },
-  );
+  const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
-  app.register(helmet);
   app.enableVersioning({
     type: VersioningType.URI,
     prefix: 'v',
@@ -41,7 +23,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document);
+  SwaggerModule.setup('docs', app, document, {});
 
   await app.listen(3000, '0.0.0.0');
 }

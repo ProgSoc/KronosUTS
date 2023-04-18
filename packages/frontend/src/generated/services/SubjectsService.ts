@@ -23,7 +23,7 @@ export class SubjectsService {
     ): CancelablePromise<Array<MinimalSubjectDto>> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/subjects/list',
+            url: '/api/subjects/list',
             query: {
                 'semester': semester,
             },
@@ -43,7 +43,7 @@ export class SubjectsService {
     ): CancelablePromise<MinimalSubjectDto> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/subjects/{code}',
+            url: '/api/subjects/{code}',
             path: {
                 'code': code,
             },
@@ -66,7 +66,7 @@ export class SubjectsService {
     ): CancelablePromise<Array<PublicActivityDto>> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/subjects/{code}/activities',
+            url: '/api/subjects/{code}/activities',
             path: {
                 'code': code,
             },

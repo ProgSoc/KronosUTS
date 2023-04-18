@@ -1,6 +1,4 @@
 import { ApiClient } from "../generated";
 
-const api = new ApiClient({
-  BASE: import.meta.env.VITE_BASE_URL,
-});
+const api = new ApiClient();
 export default api;
