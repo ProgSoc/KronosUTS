@@ -7,6 +7,12 @@ import { FetcherService } from './fetcher/fetcher.service';
 import { SubjectsModule } from './subjects/subjects.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const filePath = fileURLToPath(import.meta.url);
+const publicDir = path.join(path.dirname(filePath), '../public');
 
 @Module({
   imports: [
@@ -17,6 +23,9 @@ import { ConfigModule } from '@nestjs/config';
     EventEmitterModule.forRoot(),
     PrismaModule,
     SubjectsModule,
+    ServeStaticModule.forRoot({
+      rootPath: publicDir,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService, FetcherService],
