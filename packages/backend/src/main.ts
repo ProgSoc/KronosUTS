@@ -23,6 +23,7 @@ async function bootstrap() {
       },
     },
   );
+  app.setGlobalPrefix('api');
   app.register(helmet);
   app.enableVersioning({
     type: VersioningType.URI,
@@ -40,7 +41,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('docs', app, document);
 
   await app.listen(3000, '0.0.0.0');
 }
