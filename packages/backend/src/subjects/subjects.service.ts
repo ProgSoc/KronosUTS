@@ -46,8 +46,11 @@ export class SubjectsService {
 
     if (!subject) {
       const newSubjects = await this.fetcher.fetchSubject(sem, code);
+
       return newSubjects.find(
-        (s) => s.callista_code === code && s.semester === sem,
+        (s) =>
+          s.callista_code === code &&
+          (s.semester === sem || sem === SemesterEnum.ALL),
       );
     }
 

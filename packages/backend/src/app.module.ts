@@ -9,6 +9,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { fileURLToPath } from 'url';
+import { ActivitiesModule } from './activities/activities.module';
 import path from 'path';
 
 const filePath = fileURLToPath(import.meta.url);
@@ -26,6 +27,7 @@ const publicDir = path.join(path.dirname(filePath), '../public');
     ServeStaticModule.forRoot({
       rootPath: publicDir,
     }),
+    ActivitiesModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService, FetcherService],

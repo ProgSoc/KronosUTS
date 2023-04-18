@@ -5,6 +5,7 @@ import {
   ClassSerializerInterceptor,
   Controller,
   Get,
+  NotFoundException,
   Param,
   Query,
   UseInterceptors,
@@ -14,6 +15,7 @@ import { MinimalSubjectDto } from './dto/MinimalSubject.dto';
 import { SubjectsService } from './subjects.service';
 import { PublicActivityDto } from './dto/PublicActivity.dto';
 import { SemesterDto } from './dto/Semester.dto';
+import { NotFoundError } from 'rxjs';
 
 @ApiTags('Subjects')
 @UseInterceptors(ClassSerializerInterceptor)
@@ -49,6 +51,9 @@ export class SubjectsController {
     @Param('code') code: string,
   ): Promise<MinimalSubjectDto> {
     const subject = await this.subjectService.getSubjectDetails(semester, code);
+    if (!subject) {
+      throw new NotFoundException('Subject not found');
+    }
     return new MinimalSubjectDto(subject);
   }
 
